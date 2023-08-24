@@ -13,37 +13,84 @@ Requisitos Linux:
 
 
 - Criar VPC padrão
-![vpc](https://github.com/uWalker-X/Atividade-Linux/assets/138799292/49e17f0b-d9b5-46eb-9fc1-5a0a1a24072b)
+	nos serviços de VPC no console AWS, clique em criar VPC
 
-- configurar security group referente a VPC criada com a seguintes portas liberadas
-![Security Group VPC](https://github.com/uWalker-X/Atividade-Linux/assets/138799292/deb826c7-a326-468f-8216-75e41493dd53)
+	marque a caixa VPC e muito mais e gerar automaticamente a etiqueta do nome
+  ![Captura da Web_24-8-2023_112120_us-east-1 console aws amazon com](https://github.com/uWalker-X/AWS-Compass/assets/138799292/780fd0bb-d117-4ac0-a1bb-1f8b4dbe03b3)
+  	crie no mínimo duas zonas de disponibilidade
+
+  	com duas subnets privadas e duas subnets públicas
+	Gateway NAT e Endpoints da VPC não são necessárias para essa atividade, portanto são opicionais
+
+- configure security group referente a VPC criada com a seguintes portas liberadas
+  	para isso, na aba security group nos serviços de EC2 e abra as portas
+
+		TCP: 80 > 0.0.0.0
+  		TCP: 22 > 0.0.0.0
+  		TCP: 443 > 0.0.0.0
+  		TCP: 3306 > 0.0.0.0
+ 		TCP/UDP: 111 > 0.0.0.0
+  		TCP/UDP: 2049 > 0.0.0.0
 
 - criar EFS padrão, e associando a VPC padrão criada
-![nfs](https://github.com/uWalker-X/Atividade-Linux/assets/138799292/1e4d7e09-3dfd-47ed-9d02-0226fa5719d3)
+	no console AWS, se direcione aos serviços EFS e crie um sistema de arquivos
+
+  	selecione sua VPC e dê um nome
+
+   	ao criar, clicando no nome ou ID do EFS será mostrado os detalhes do EFS
+
+  	clicando em anexar será exibido o comando mount do seu EFS que será usado posteriormente
 
 - crie uma instância EC2 com sistema operacional Amazon Linux 2
-![OS EC2](https://github.com/uWalker-X/Atividade-Linux/assets/138799292/d5a79ebd-5e26-4e42-8032-817fd3146e3e)
+	nos serviços EC2, na aba instância
 
-- o padrão Compass exige o uso de TAGs específicas para instâncias e volumes para a criação
-![Tags EC2](https://github.com/uWalker-X/Atividade-Linux/assets/138799292/2bae48d4-fcde-4914-80a0-6ce17f161632)
+	vamos executar nossa primeira instância
 
-- em configurações de rede, marque sua VPC e grupo de segurança criados
-![conf  de rede](https://github.com/uWalker-X/Atividade-Linux/assets/138799292/7ca7b9e0-c908-4efa-9df1-e199ce41a605)
+- o padrão Compass exige o uso de TAGs específicas para a criação de instâncias e volumes
+![Captura da Web_24-8-2023_11344_us-east-1 console aws amazon com](https://github.com/uWalker-X/AWS-Compass/assets/138799292/044e7257-c92d-4822-b393-7f8281b4d97e)
 
-- habilite também o IPv4 público para ter aceso à instância
+		name: PB IFMT - UTFPR - UNAMA
+  		CostCenter: C092000004
+  		Project: PB IFMT - UTFPR - UNAMA
 
-- em volume EBS selecione sistema de arquivos e escolha sua NFS criada
-![volume EC2](https://github.com/uWalker-X/Atividade-Linux/assets/138799292/65848fbd-6f19-4714-accb-c95e5e3b22a8)
+- imagens de aplicação e de sistema operacional
+	usaremos Amazon Linux - 64 bits (x86)
 
-- executar a instância
+	tipo de instância t2.micro ou t3.micro
+
+- configurações de rede
+	edite e selecione sua VPC
+
+	marque uma subnet pública
+
+	e em firewall, escolha seu security group configurado
+
+- OBS: habilite o IPv4 público para ter aceso à instância
+
+- par de chaves
+	clique no atalho de criar novo par de chaves
+
+	insira um nome e selecione o tipo de chave RSA no formato .pem
+
+- volume do EBS
+	mantenha as configurações, porém, em sistemas de arquivos
+
+ 	marque a caixa EFS e clique em adicionar sistema compartilhado
+
+  	seu EFS montará de fora automática assim que a instância iniciar
+
+- execute a instância
+  
 - conecte-se a sua instância EC2 criada
-![primeira conexão](https://github.com/uWalker-X/Atividade-Linux/assets/138799292/e8b34862-f267-4eb3-a4ff-83a464548fba)
-
+	
 - execute o comando df -T -h
-![teste NFS](https://github.com/uWalker-X/Atividade-Linux/assets/138799292/4a864571-fdc4-43b5-9a98-c5736320c487)
+  se exibir o ID do seu EFS montado, signifca que ocorreu de forma automática
 
-- foi criado um diretório com meu nome dentro do filesystem do NFS usando mkdir
-![nome do filesysten NFS](https://github.com/uWalker-X/Atividade-Linux/assets/138799292/d0c394de-352d-41ca-a80a-ee5650c3c42d)
+  caso contrário, dirija-se ao serviço EFS e copie o comando que aparece na aba anexar
+
+- crie um diretório com seu nome na pasta do EFS
+
+  		mkdir seu_nome
 
 - para subir e configurar o apache foi usado o comando
 
@@ -54,9 +101,4 @@ Requisitos Linux:
 
 - use o ip público para acessar
 
-![apache online](https://github.com/uWalker-X/Atividade-Linux/assets/138799292/e48c05c8-584f-439b-b06b-a12a45d85116)
-
 - a imagem mostra o servidor online, sem alterações até então
-- após o comando: sudo echo '<center><h1>este servidor web apache está roando em uma intância EC2 da AWS </h1></center>' > /var/www/html/index.html
--  o site passou a se apresentar desta forma
-![pós alterações](https://github.com/uWalker-X/Atividade-Linux/assets/138799292/c1fc3879-c910-43b6-8e92-09fcddfa49d3)
