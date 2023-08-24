@@ -1,6 +1,6 @@
 Segunda atividade prática do programa de bolsas CompassUOL.
 
-autores: Wesley Sergio do Carmo Soares e Luis Paulo Lopes Gonçalves
+Autores: Wesley Sergio do Carmo Soares e Luis Paulo Lopes Gonçalves
 
 - REQUISITOS:
 1. instalação e configuração do DOCKER ou CONTAINERD no host EC2;
