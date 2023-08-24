@@ -187,4 +187,4 @@ selecione sua VPC e posteriormente sua security group
 
 de volta a criação do load balancer, selecione o grupo de destino criado
 
-e crie seu load balancer
+e crie seu load balancer.
