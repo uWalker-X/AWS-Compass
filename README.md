@@ -1,21 +1,21 @@
-Requisitos AWS:
-	gerar uma chave pública para acesso ao ambiente;
-	criar uma instância EC2 com o sistema operacional Amazon Linux 2 (Família t3 small, 16GB SSD);
-	gerar um elastci IP e anexar à instância EC2;
-	liberar portas de comunicação para acesso público: (22/TCP, 111/TCP/UDP, 2049/TCP/UDP, 80/TCP, 443/TCP).
-Requisitos Linux:
-	configurar NFS entregue;
-	criar um diretório dentro do filesystemdo NFS com o seu nome;
- 	criar um script que valide se o serviço esta online e envie o resultado da validação para o NFS;
-  	o scrit deve gerar 2 arquivos de saída: 1 para o serviço online e um para o serviço offline;
-   	preparar a execução automatizada do script a cad 5 minutos.
+1. Requisitos AWS:
+- gerar uma chave pública para acesso ao ambiente;
+- criar uma instância EC2 com o sistema operacional Amazon Linux 2 (Família t3 small, 16GB SSD);
+- gerar um elastci IP e anexar à instância EC2;
+- liberar portas de comunicação para acesso público: (22/TCP, 111/TCP/UDP, 2049/TCP/UDP, 80/TCP, 443/TCP).
+2. Requisitos Linux:
+- configurar NFS entregue;
+- criar um diretório dentro do filesystemdo NFS com o seu nome;
+- criar um script que valide se o serviço esta online e envie o resultado da validação para o NFS;
+- o scrit deve gerar 2 arquivos de saída: 1 para o serviço online e um para o serviço offline;
+- preparar a execução automatizada do script a cad 5 minutos.
   
 
+Criar VPC padrão
 
-- Criar VPC padrão
-	nos serviços de VPC no console AWS, clique em criar VPC
+nos serviços de VPC no console AWS, clique em criar VPC
 
-	marque a caixa VPC e muito mais e gerar automaticamente a etiqueta do nome
+marque a caixa VPC e muito mais e gerar automaticamente a etiqueta do nome
   ![Captura da Web_24-8-2023_112120_us-east-1 console aws amazon com](https://github.com/uWalker-X/AWS-Compass/assets/138799292/780fd0bb-d117-4ac0-a1bb-1f8b4dbe03b3)
   	crie no mínimo duas zonas de disponibilidade
 
