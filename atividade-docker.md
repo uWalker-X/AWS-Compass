@@ -22,7 +22,7 @@ Autores: Wesley Sergio do Carmo Soares e Luis Paulo Lopes Gonçalves
 - Daremos início a atividade com o autoscaling, para isso abra a console do EC2 e selecione os serviços de autoscaling
   
 OBS: Criaremos um modelo de execução autoscaling com todos os mesmos parâmetros utilizados na intância da primeira atividade juntamente com
-os modelos de VPC e security groups da primeira atividade e EFS, nesse contexto, acesse README.md para mais detalhes
+os modelos de VPC e security groups da primeira atividade e EFS, nesse contexto, acesse ``README.md`` para mais detalhes
 
 primeiramente, utilizaremos o grupo de autoscaling para padronizar e automatizar nossas instâncias
 
